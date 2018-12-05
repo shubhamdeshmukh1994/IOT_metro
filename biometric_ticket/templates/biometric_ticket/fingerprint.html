@@ -1,0 +1,30 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'biometric_ticket/css/mystyle.css' %}" />
+
+<body>
+<div id="main-wrapper">
+<center><h2>Finger Print</h2>
+
+</center>
+<br>
+<br>
+<form action="{% url 'biometric_ticket:abc' %}" method="post"> 
+    {% csrf_token %}
+    <input type="text" name="c_uuid" placeholder="Enter UUID"></br></br></br>
+    <input type="text" name="status" placeholder="Enter Status"></br></br></br>
+    <input type="submit" value="submit" style="  background-color: #4CAF50;border: none;
+    color: white;margin-left:25px;">
+
+</form>
+
+{% if scanning  == 'True' %}
+    {% if status == '3' %}
+    Currently scanning
+    {% endif %}
+    {% if status == '7' %}
+    Currently authenticating
+    {% endif %}
+    
+{% endif %}
+</div>
+</body>
